@@ -795,7 +795,7 @@ var PACMAN = (function () {
 
     function drawScore(text, position) {
         ctx.fillStyle = "#FFFFFF";
-        ctx.font      = "12px BDCartoonShoutRegular";
+        ctx.font      = "12px Courier";
         ctx.fillText(text, 
                      (position["new"]["x"] / 10) * map.blockSize, 
                      ((position["new"]["y"] + 5) / 10) * map.blockSize);
@@ -803,7 +803,7 @@ var PACMAN = (function () {
     
     function dialog(text) {
         ctx.fillStyle = "#FFFF00";
-        ctx.font      = "14px BDCartoonShoutRegular";
+        ctx.font      = "14px Courier";
         var width = ctx.measureText(text).width,
             x     = ((map.width * map.blockSize) - width) / 2;        
         ctx.fillText(text, x, (map.height * 10) + 8);
@@ -896,13 +896,12 @@ var PACMAN = (function () {
 
         ctx.fillStyle = !soundDisabled() ? "#00FF00" : "#FF0000";
         ctx.font = "bold 16px sans-serif";
-        //ctx.fillText("♪", 10, textBase);
         ctx.fillText("s", 10, textBase);
 
         ctx.fillStyle = "#FFFF00";
-        ctx.font      = "14px BDCartoonShoutRegular";
+        ctx.font      = "14px Courier";
         ctx.fillText("Score: " + user.theScore(), 30, textBase);
-        ctx.fillText("Level: " + level, 260, textBase);
+        ctx.fillText("Niveau: " + level, 260, textBase);
     }
 
     function redrawBlock(pos) {
@@ -968,7 +967,7 @@ var PACMAN = (function () {
         } else if (state === WAITING && stateChanged) {            
             stateChanged = false;
             map.draw(ctx);
-            dialog("Press N to start a New game");            
+            dialog("Appuyez sur N pour démarrer");
         } else if (state === EATEN_PAUSE && 
                    (tick - timerStart) > (Pacman.FPS / 3)) {
             map.draw(ctx);
@@ -995,7 +994,6 @@ var PACMAN = (function () {
                 if (diff !== lastTime) { 
                     lastTime = diff;
                     map.draw(ctx);
-                    dialog("Starting in: " + diff);
                 }
             }
         } 
@@ -1053,7 +1051,7 @@ var PACMAN = (function () {
         }
         
         map.draw(ctx);
-        dialog("Loading ...");
+        dialog("Chargement ...");
 
         var extension = Modernizr.audio.ogg ? 'ogg' : 'mp3';
 
@@ -1081,7 +1079,7 @@ var PACMAN = (function () {
         
     function loaded() {
 
-        dialog("Press N to Start");
+        dialog("Appuyez sur N pour commencer");
         
         document.addEventListener("keydown", keyDown, true);
         document.addEventListener("keypress", keyPress, true); 
